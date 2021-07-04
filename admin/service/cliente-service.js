@@ -14,9 +14,13 @@ const criaCliente = (nome, email) => {
       nome: nome,
       email: email,
     }),
-  }).then((response) => {
-    return response.body;
-  });
+  })
+    .then((response) => {
+      return response.body;
+    })
+    .then(() => {
+      console.log(response.body);
+    });
 };
 
 export const clienteService = {
