@@ -1,10 +1,25 @@
-const listaClientes = () =>  {
-    return fetch(`http://localhost:3000/profile`)
-    .then(resposta => {
-        return resposta.json()
-    })
-}
+const listaClientes = () => {
+  return fetch(`http://localhost:3000/profile`).then((resposta) => {
+    return resposta.json();
+  });
+};
 
-export const clienteService = { 
-    listaClientes
-}
+const criaCliente = (nome, email) => {
+  return fetch(`http://localhost:3000/profile`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'aplication/json',
+    },
+    body: JSON.stringify({
+      nome: nome,
+      email: email,
+    }),
+  }).then((response) => {
+    return response.body;
+  });
+};
+
+export const clienteService = {
+  listaClientes,
+  criaCliente,
+};

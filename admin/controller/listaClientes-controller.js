@@ -1,6 +1,6 @@
-import { clienteService } from '../service/cliente-service.js'
-const criaNovaLinha = (nome, email) =>  { 
-  const linhaNovoCliente = document.createElement('tr')
+import { clienteService } from '../service/cliente-service.js';
+const criaNovaLinha = (nome, email) => {
+  const linhaNovoCliente = document.createElement('tr');
   const conteudo = `
       <td class="td" data-td>${nome}</td>
                   <td>${email}</td>
@@ -10,16 +10,15 @@ const criaNovaLinha = (nome, email) =>  {
                           <li><button class="botao-simples botao-simples--excluir" type="button">Excluir</button></li>
                       </ul>
                   </td> 
-                  `
-  linhaNovoCliente.innerHTML = conteudo
-  return linhaNovoCliente
-}
+                  `;
+  linhaNovoCliente.innerHTML = conteudo;
+  return linhaNovoCliente;
+};
 
+const tabela = document.querySelector('[data-tabela]');
 
-const tabela = document.querySelector('[data-tabela]')
-
-clienteService.listaClientes()
-.then(data => {
-        data.forEach(elemento => {
-        tabela.appendChild(criaNovaLinha(elemento.nome,elemento.email))
-})})
+clienteService.listaClientes().then((data) => {
+  data.forEach((elemento) => {
+    tabela.appendChild(criaNovaLinha(elemento.nome, elemento.email));
+  });
+});
